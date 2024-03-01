@@ -3,7 +3,7 @@
         android:label="greengrocer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:versionCode="1.0.0">
+        android:versionCode="1">
         <activity
             android:name=".MainActivity"
             android:exported="true"
