@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home/home_tab.dart';
+
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
 
@@ -17,7 +19,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: const NeverScrollableScrollPhysics(), //Remove navegação entre as telas deslizando para os lados
         controller: pageController,
         children: [
-          Container(color: Colors.red,),
+          HomeTab(),
           Container(color: Colors.yellow,),
           Container(color: Colors.blue,),
           Container(color: Colors.purple,),
