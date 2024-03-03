@@ -20,6 +20,8 @@ class _HomeTabState extends State<HomeTab> {
     'Cereais',
   ];
 
+  String selectedCategory = 'Frutas';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,17 +102,27 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
           ),
-          ListView.separated(
-              itemBuilder: (_, index) {
-                return CategoryTile(
-                  category: categories[index],
-                  isSelected: false,
-                );
-              },
-              separatorBuilder: (_, index) => const SizedBox(
-                    width: 10,
-                  ),
-              itemCount: categories.length),
+          Container(
+            padding: const EdgeInsets.only(left: 25),
+            height: 40,
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, index) {
+                  return CategoryTile(
+                    onPressed: () {
+                      setState(() {
+                        selectedCategory = categories[index];
+                      });
+                    },
+                    category: categories[index],
+                    isSelected: categories[index] == selectedCategory,
+                  );
+                },
+                separatorBuilder: (_, index) => const SizedBox(
+                      width: 10,
+                    ),
+                itemCount: categories.length),
+          ),
         ],
       ),
     );
