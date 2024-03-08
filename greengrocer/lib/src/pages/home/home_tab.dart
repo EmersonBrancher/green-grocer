@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
-
+import 'package:greengrocer/src/config/app_data.dart' as app_data;
+import 'package:greengrocer/src/pages/home/components/item_tile.dart';
 import 'components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
@@ -12,14 +13,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categories = [
-    'Frutas',
-    'Grãos',
-    'Verduras',
-    'Temperos',
-    'Cereais',
-  ];
-
   String selectedCategory = 'Frutas';
 
   @override
@@ -111,17 +104,33 @@ class _HomeTabState extends State<HomeTab> {
                   return CategoryTile(
                     onPressed: () {
                       setState(() {
-                        selectedCategory = categories[index];
+                        selectedCategory = app_data.categories[index];
                       });
                     },
-                    category: categories[index],
-                    isSelected: categories[index] == selectedCategory,
+                    category: app_data.categories[index],
+                    isSelected: app_data.categories[index] == selectedCategory,
                   );
                 },
                 separatorBuilder: (_, index) => const SizedBox(
                       width: 10,
                     ),
-                itemCount: categories.length),
+                itemCount: app_data.categories.length),
+          ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(), // muda a animação do final da lista (e topo)
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5,
+              ),
+              itemBuilder: (_, index) {
+                return ItemTile(item: app_data.items[index],);
+              },
+              itemCount: app_data.items.length,
+            ),
           ),
         ],
       ),
