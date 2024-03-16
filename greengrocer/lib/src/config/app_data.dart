@@ -26,7 +26,7 @@ ItemModel guava = ItemModel(
 ItemModel kiwi = ItemModel(
     itemName: 'Kiwi',
     imgUrl: 'assets/fruits/kiwi.png',
-    unit: 'Kg',
+    unit: 'Un',
     price: 2.5,
     description:
         'Maecenas aliquam elit vel justo pretium, vitae luctus ligula porta.');
