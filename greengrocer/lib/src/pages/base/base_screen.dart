@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/pages/cart/cart_tab.dart';
 
 import '../home/home_tab.dart';
 
@@ -19,8 +20,8 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: const NeverScrollableScrollPhysics(), //Remove navegação entre as telas deslizando para os lados
         controller: pageController,
         children: [
-          HomeTab(),
-          Container(color: Colors.yellow,),
+          const HomeTab(),
+          CartTab(),
           Container(color: Colors.blue,),
           Container(color: Colors.purple,),
         ],
